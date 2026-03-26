@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- 背景圆 -->
+    <path
+        android:fillColor="#E5E7EB"
+        android:pathData="M60,60m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0" />
+    
+    <!-- 照片图标 -->
+    <path
+        android:fillColor="#9CA3AF"
+        android:pathData="M35,40 L85,40 A5,5 0 0,1 90,45 L90,75 A5,5 0 0,1 85,80 L35,80 A5,5 0 0,1 30,75 L30,45 A5,5 0 0,1 35,40 Z" />
+    
+    <!-- 山形 -->
+    <path
+        android:fillColor="#9CA3AF"
+        android:pathData="M30,75 L50,55 L65,70 L75,60 L90,75 L90,75 A5,5 0 0,1 85,80 L35,80 A5,5 0 0,1 30,75 Z" />
+    
+    <!-- 太阳 -->
+    <path
+        android:fillColor="#D1D5DB"
+        android:pathData="M70,48m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+</vector>

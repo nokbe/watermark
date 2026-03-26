@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- 圆形背景 -->
+    <path
+        android:fillColor="#6200EE"
+        android:pathData="M24,24m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0" />
+    
+    <!-- 水滴图标 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M24,8
+                         C24,8 12,24 12,34
+                         C12,40 17.5,44 24,44
+                         C30.5,44 36,40 36,34
+                         C36,24 24,8 24,8Z" />
+</vector>

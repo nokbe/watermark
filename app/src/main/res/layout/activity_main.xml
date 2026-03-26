@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_light"
+    tools:context=".MainActivity">
+
+    <!-- 顶部标题栏 -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_blue"
+            app:title="照片水印工具"
+            app:titleTextColor="@color/white"
+            app:navigationIconTint="@color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 主内容区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- 照片预览区域 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- 占位提示 -->
+                <TextView
+                    android:id="@+id/tvPlaceholder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="点击下方按钮选取照片"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    android:drawableTop="@drawable/ic_photo_placeholder"
+                    android:drawablePadding="16dp" />
+
+                <!-- 图片显示 -->
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:visibility="gone"
+                    android:contentDescription="照片预览" />
+
+                <!-- 加载进度条 -->
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- 底部按钮区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 第一行按钮 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSelectPhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:text="选取照片"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_photo"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="8dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEditWatermark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:text="编辑水印"
+                    android:textSize="16sp"
+                    app:icon="@drawable/ic_edit"
+                    app:iconGravity="textStart"
+                    app:cornerRadius="8dp"
+                    style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            </LinearLayout>
+
+            <!-- 保存按钮 -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="保存照片"
+                android:textSize="16sp"
+                android:enabled="false"
+                app:icon="@drawable/ic_save"
+                app:iconGravity="textStart"
+                app:cornerRadius="8dp"
+                style="@style/Widget.Material3.Button.TonalButton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">照片水印工具</string>
+    
+    <!-- 主界面 -->
+    <string name="select_photo">选取照片</string>
+    <string name="edit_watermark">编辑水印</string>
+    <string name="save_photo">保存照片</string>
+    <string name="photo_placeholder">点击下方按钮选取照片</string>
+    
+    <!-- 编辑水印界面 -->
+    <string name="edit_watermark_title">编辑水印</string>
+    <string name="save_config">保存配置</string>
+    <string name="add_text_item">添加文字项</string>
+    <string name="text_content">文字内容</string>
+    <string name="text_label">标签名称</string>
+    <string name="enabled">启用</string>
+    <string name="delete">删除</string>
+    
+    <!-- 提示信息 -->
+    <string name="select_photo_first">请先选择照片</string>
+    <string name="apply_watermark_first">请先添加水印</string>
+    <string name="photo_saved">照片已保存到相册</string>
+    <string name="config_saved">配置已保存</string>
+    <string name="permission_required">需要存储权限才能保存照片</string>
+    <string name="loading">处理中...</string>
+    
+    <!-- 默认文字项 -->
+    <string name="default_project_name">项目名称</string>
+    <string name="default_leader">带班领导</string>
+    <string name="default_inspection">检查内容</string>
+    <string name="default_time">拍摄时间</string>
+    <string name="default_location">地点</string>
+    <string name="default_construction_unit">建设单位</string>
+    <string name="default_supervision_unit">监理单位</string>
+    <string name="default_build_unit">施工单位</string>
+</resources>
