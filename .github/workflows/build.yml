@@ -20,10 +20,11 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
 
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3.3.2
+      with:
+        gradle-version: '8.2'
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
@@ -36,9 +37,4 @@ jobs:
       with:
         name: app-debug
         path: app/build/outputs/apk/debug/app-debug.apk
-
-    - name: Upload Release APK
-      uses: actions/upload-artifact@v4.3.1
-      with:
-        name: app-release
-        path: app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: warn
