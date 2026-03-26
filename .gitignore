@@ -94,3 +94,6 @@ Thumbs.db
 
 # output folder
 output/
+
+# Keep gradle wrapper jar
+!gradle/wrapper/gradle-wrapper.jar
