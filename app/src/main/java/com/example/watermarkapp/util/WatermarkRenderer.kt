@@ -124,19 +124,19 @@ class WatermarkRenderer(private val context: Context) {
             // 从资源加载Logo
             val logoBitmap = BitmapFactory.decodeResource(context.resources, R.drawable.ic_logo)
             if (logoBitmap != null) {
-                // 计算Logo尺寸和位置
+                // 计算Logo尺寸和位置（左上角）
                 val logoHeight = (height * LOGO_HEIGHT_RATIO).toInt()
                 val logoWidth = (logoBitmap.width * logoHeight / logoBitmap.height.toFloat()).toInt()
                 val padding = (height * WATERMARK_PADDING).toFloat()
-                
+
                 // 缩放Logo
                 val scaledLogo = Bitmap.createScaledBitmap(logoBitmap, logoWidth, logoHeight, true)
-                
-                // 绘制Logo（居中）
-                val left = (width - logoWidth) / 2f
+
+                // 绘制Logo（左上角）
+                val left = padding
                 val top = padding
                 canvas.drawBitmap(scaledLogo, left, top, null)
-                
+
                 // 回收Bitmap
                 scaledLogo.recycle()
                 logoBitmap.recycle()
@@ -173,51 +173,46 @@ class WatermarkRenderer(private val context: Context) {
         val padding = (height * WATERMARK_PADDING).toFloat()
         val logoHeight = (height * LOGO_HEIGHT_RATIO)
         var currentY = padding + logoHeight + padding
-        
-        val normalTextSize = (height * NORMAL_TEXT_SIZE_RATIO)
-        val smallTextSize = (height * SMALL_TEXT_SIZE_RATIO)
-        val lineSpacing = normalTextSize * 1.5f
-        
-        // 创建文字画笔
+
+        // 使用相同的基础字体大小，标签稍小
+        val baseTextSize = (height * NORMAL_TEXT_SIZE_RATIO)
+        val labelTextSize = baseTextSize * 0.9f
+        val contentTextSize = baseTextSize
+        val lineSpacing = contentTextSize * 1.6f
+
+        // 创建标签画笔（浅灰色）
         val labelPaint = Paint().apply {
-            color = Color.parseColor("#E0E7FF")  // 浅蓝色标签
-            textSize = smallTextSize
+            color = Color.parseColor("#B8C5D6")  // 浅灰蓝色标签
+            textSize = labelTextSize
             isAntiAlias = true
             textAlign = Paint.Align.LEFT
         }
-        
+
+        // 创建内容画笔（白色粗体带阴影）
         val contentPaint = Paint().apply {
             color = Color.WHITE
-            textSize = normalTextSize
+            textSize = contentTextSize
             isAntiAlias = true
             isFakeBoldText = true
             textAlign = Paint.Align.LEFT
-            setShadowLayer(1f, 1f, 1f, Color.BLACK)
+            setShadowLayer(2f, 1f, 1f, Color.argb(100, 0, 0, 0))
         }
-        
+
         // 绘制每个启用的文字项
         config.textItems.filter { it.enabled }.forEach { item ->
             // 绘制标签
             if (item.label.isNotEmpty()) {
-                canvas.drawText("${item.label}：", padding, currentY, labelPaint)
-                
+                val fullLabel = "${item.label}："
+                canvas.drawText(fullLabel, padding, currentY, labelPaint)
+
                 // 计算内容起始位置
-                val labelWidth = labelPaint.measureText("${item.label}：")
+                val labelWidth = labelPaint.measureText(fullLabel)
                 canvas.drawText(item.content, padding + labelWidth, currentY, contentPaint)
             } else {
                 canvas.drawText(item.content, padding, currentY, contentPaint)
             }
-            
+
             currentY += lineSpacing
         }
-        
-        // 绘制底部装饰线
-        val lineY = height - padding / 2
-        val linePaint = Paint().apply {
-            color = Color.parseColor("#93C5FD")
-            strokeWidth = 2f
-            alpha = 150
-        }
-        canvas.drawLine(padding, lineY, width - padding, lineY, linePaint)
     }
 }
